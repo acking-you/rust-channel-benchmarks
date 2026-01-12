@@ -4,14 +4,16 @@ version = "0.1.0"
 edition = "2018"
 
 [dependencies]
-async-channel = "1.7"
+async-channel = "2.5"
 crossbeam = "0.8"
 crossbeam-channel = "0.5"
-flume = "0.10"
+flume = { path = "flume-fork" }
 futures = { version = "0.3", features = ["thread-pool"] }
-tokio = { version = "1", features = ["rt-multi-thread", "macros"] }
+tokio = { version = "1", features = ["rt-multi-thread", "macros", "time"] }
 kanal = { git = "https://github.com/fereidani/kanal" }
-kanal-std-mutex = { path = "kanal2", features = ["std-mutex"], package = "kanal" }
+kanal-std-mutex = { path = "kanal2", features = [
+    "std-mutex",
+], package = "kanal" }
 
 [profile.release]
 opt-level = 3
@@ -73,3 +75,7 @@ name = "async-channel"
 path = "async-channel.rs"
 doc = false
 
+[[bin]]
+name = "issue-140-repro"
+path = "issue_140_repro.rs"
+doc = false

@@ -45,13 +45,23 @@ Results are based on how many messages can be passed in each scenario per second
 
 N/A means that the test subject can't perform the test because of its limitations, for example, some libraries don't have support for size 0 channels or MPMC.
 
-Machine: `AMD Ryzen Threadripper 2950X 16-Core Processor`<br />
-Rust: `rustc 1.65.0 (897e37553 2022-11-02)`<br />
-Go: `go version go1.19.3 linux/amd64`<br />
-OS (`uname -a`): `Linux 5.15.0-52-generic #58~20.04.1-Ubuntu SMP Thu Oct 13 13:09:46 UTC 2022 x86_64`<br />
-Date: Nov 11, 2022
+Machine: `Apple M3 Pro`<br />
+Rust: `rustc 1.86.0 (05f9846f8 2025-03-31)`<br />
+Go: `go version go1.23.3 darwin/arm64`<br />
+OS (`uname -a`): `Darwin 23.5.0 arm64`<br />
+Date: January 12, 2026
 
-![Benchmarks](https://i.imgur.com/QK1UOyW.png)
+#### Unbounded Channel
+![Unbounded](images/plot_unbounded.svg)
+
+#### Bounded Channel (capacity=n)
+![Bounded](images/plot_bounded.svg)
+
+#### Bounded Channel (capacity=1)
+![Bounded1](images/plot_bounded1.svg)
+
+#### Bounded Channel (capacity=0, rendezvous)
+![Bounded0](images/plot_bounded0.svg)
 
 #### Why in some tests async is much faster than sync?
 It's because of Tokio's context-switching performance, like Golang, Tokio context-switch in the same thread to the next coroutine when the channel message is ready which is much cheaper than communicating between different threads, It's the same reason why async network applications usually perform better than sync implementations.
