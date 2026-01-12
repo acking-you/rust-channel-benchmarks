@@ -16,12 +16,21 @@ Dependencies:
 - Go
 - Git
 - Bash
-- libcairo2-dev
-- Python
-  - pygal
-  - cairosvg
-  - tk
-  - PIL
+- Cairo library:
+  - Linux: `apt install libcairo2-dev`
+  - macOS: `brew install cairo`
+- Python 3.10+ with [uv](https://github.com/astral-sh/uv) (recommended) or pip
+
+#### Running plot.py
+
+```bash
+# Using uv (recommended, auto-installs Python deps)
+uv run ./plot.py target/*.csv
+
+# Or with pip (install deps manually first)
+pip install pygal cairosvg pillow
+./plot.py target/*.csv
+```
 
 ### Contributing
 

@@ -1,7 +1,9 @@
 #!/usr/bin/env python3
+# /// script
+# requires-python = ">=3.10"
+# dependencies = ["pygal", "cairosvg", "pillow"]
+# ///
 import sys
-from turtle import width
-from unittest import TestCase
 import pygal
 from PIL import Image
 
